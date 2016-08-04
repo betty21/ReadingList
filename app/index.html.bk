@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="readingList" class="no-js">
+<!--<![endif]-->
+
+
+<head>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+<body class="container" ng-controller="ReadingListController as readingListCtrl">
+
+  <h1>Angular Reading List of Awesome</h1>
+
+
+  <button class="btn btn-default" ng-click="showReviewFormCtrl.showForm=!showReviewFormCtrl.showForm"> 
+  {{showReviewFormCtrl.showForm ? "cancel" : "Create Review"}}</button>
+
+  <hr/>
+  <review-form books="readingListCtrl.books" genres="readingListCtrl.genres" ng-show="showReviewFormCtrl.showForm"></review-form>
+  <hr/>
+
+  <ul class="list-unstyled col-sm-8">
+    <li class="book row" ng-repeat="book in readingListCtrl.books">
+
+      <book-cover></book-cover>
+      <aside class="col-sm-3><p class=" goodRating rating ">Reating: {{book.rating}}></aside>
+  <div class="col-sm-9 ">
+    <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}} ">Book Title :{{book.title}}</a></h3>
+    
+    <cite class="text-muted ">Written by {{book.author}}</cite>
+    <p>Book Review: {{book.review}} </p>
+    
+
+    <ul class="list-unstyled ">
+      <li ng-repeat="(genre, state) in genres " ng-show="state ">
+        <span class="label label-primary ">{{genre}}</span>
+      </li>
+  </ul>
+  <book-genres> </book-genres>
+    
+</div>
+
+
+ </li>
+</ul>
+
+<div>
+    </li>
+  </ul>
+
+
+
+
+
+
+  
+ 
+ 
+
+
+  <script type="text/javascript " src="bower_components/jquery/dist/jquery.min.js "></script>
+  <script type="text/javascript " src="bower_components/bootstrap/dist/js/bootstrap.min.js "></script>
+
+  <script src="bower_components/angular/angular.js "></script>
+  <script src="bower_components/angular-route/angular-route.js "></script>
+  <script src="app.js "></script>
+
+</body>
+</html>

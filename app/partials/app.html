@@ -1,0 +1,37 @@
+<div class="row" ng-controller="ReadingListController as readingListCtrl">
+
+
+ <label for="title" class="col-sm-2 control-label">your name:</label>
+ <input type="text"  ng-model="readingListCtrl.books.title"/>
+
+<customer-name info="readingListCtrl"></customer-name> 
+
+
+
+
+
+    <button class="btn btn-default" ng-click="readingListCtrl.showForm = !readingListCtrl.showForm">{{readingListCtrl.showForm ? "Cancel" : "Create a Review"}}</button>
+   
+    <hr />
+
+    <review-form change-review-form="readingListCtrl.changeReviewForm" beti="readingListCtrl.selectedBook" genres="readingListCtrl.genres" newbook="readingListCtrl.books"
+        ng-show="readingListCtrl.showForm">
+    </review-form>
+
+    <hr />
+
+    <ul class="list-unstyled col-sm-8">
+        <li class="book row" ng-repeat="book in readingListCtrl.books" ng-click="readingListCtrl.selectBook(book)">
+            <book-cover></book-cover>
+            <div class="col-sm-9">
+                <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}">{{book.title}}</a></h3>
+
+                <cite class="text-muted">Written by {{book.author}}</cite>
+
+                <p>{{book.review}}</p>
+
+                <book-genres genres="book.genres"></book-genres>
+            </div>
+        </li>
+    </ul>
+</div>
